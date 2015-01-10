@@ -1,17 +1,25 @@
 var db = require('../db');
 
 
-
+// Requests to database are in format of:
+// "SELECT ?? FROM ?? WHERE ?? = ?"
 
 module.exports = {
   messages: {
-    get: function () {}, // a function which produces all the messages
-    post: function () {} // a function which can be used to insert a message into the database
+    // a function which produces all the messages.
+    getAll: function (req) {
+      console.log(req);
+    },
+    // a function which produces all messages from a given user.
+    getByUserName: function() {
+      //
+    },
+    // a function which can be used to insert a message into the database.
+    post: function () {}
   },
 
   users: {
-    // Ditto as above.
-    get: function () {},
+    getAll: function () {},
     post: function () {}
   }
 };
