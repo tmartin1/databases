@@ -1,14 +1,29 @@
-CREATE DATABASE chat;
+DROP DATABASE IF EXISTS chatDB;
+CREATE DATABASE chatDB;
 
-USE chat;
+USE chatDB;
 
-CREATE TABLE messages (
-  /* Describe your table here.*/
+CREATE TABLE users  (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  username VARCHAR(25),
+  PRIMARY KEY(id)
 );
 
-/* Create other tables and define schemas for them here! */
+CREATE TABLE friends (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT REFERENCES users(id),
+  friend_id INT REFERENCES users(id),
+  PRIMARY KEY(id)
+);
 
-
+CREATE TABLE messages (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT REFERENCES users(id),
+  tweet VARCHAR(140),
+  time DATETIME,
+  room VARCHAR(25),
+  PRIMARY KEY(id)
+);
 
 
 /*  Execute this file from the command line by typing:
